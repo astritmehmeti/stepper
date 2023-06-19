@@ -20,6 +20,14 @@
       </div>
     </div>
   </div>
+  <div class="navigation-buttons">
+    <button @click="goToPreviousStep" :disabled="activeStep === 1">
+      Previous
+    </button>
+    <button @click="goToNextStep" :disabled="activeStep === steps.length">
+      Next
+    </button>
+  </div>
 </template>
 
 <style>
@@ -29,6 +37,7 @@
   align-items: center;
   height: 100vh;
   padding-left: 2vh;
+  max-width: 100%;
 }
 
 .stepper {
@@ -56,30 +65,30 @@
 }
 
 .circle.active {
-  background-color: #007bff; /* Set blue color for active circles */
+  background-color: #007bff;
 }
 
 .title {
   margin-top: 1.4vh;
   margin-bottom: 1.4vh;
   text-align: center;
-  color: #1d5795; /* Set the blueish color for the text */
-  font-weight: normal; /* Set the default font weight */
+  color: #1d5795;
+  font-weight: normal;
 }
 
 .title.active {
-  font-weight: bold; /* Set the font weight to bold for the active step */
+  font-weight: bold;
 }
 
 .title.done {
-  font-weight: normal; /* Set the font weight back to normal for done steps */
+  font-weight: normal;
 }
 
 .line {
   width: 0.3vh;
   height: 6vh;
-  margin-top: 7vh;
-  background-color: #ccc; /* Set the color to gray for the lines */
+  margin-top: 7.2vh;
+  background-color: #ccc;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -98,14 +107,43 @@
 }
 
 .step.done .circle {
-  background-color: #007bff; /* Set blue color for done circles */
+  background-color: #007bff;
 }
 
 .step.done .line {
-  background-color: #007bff; /* Set blue color for done lines */
+  background-color: #007bff;
+}
+
+@media (max-width: 1024px) {
+  .stepper-container {
+    padding-left: 2%;
+  }
+
+  .stepper {
+    gap: 5.5vh;
+  }
+
+  .circle {
+    width: 4vh;
+    height: 4vh;
+  }
+
+  .title {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+  }
+
+  .line {
+    width: 0.2vh;
+    height: 5vh;
+    margin-top: 6.2vh;
+  }
+
+  .step:not(:first-child) .line {
+    margin-top: 8.2vh;
+  }
 }
 </style>
-
 <script>
 import { defineComponent } from "vue";
 
@@ -122,5 +160,18 @@ export default defineComponent({
       activeStep: 3,
     };
   },
+  methods: {
+    goToNextStep() {
+      if (this.activeStep < this.steps.length) {
+        this.activeStep++;
+      }
+    },
+    goToPreviousStep() {
+      if (this.activeStep > 1) {
+        this.activeStep--;
+      }
+    },
+  },
 });
 </script>
+
