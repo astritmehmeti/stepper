@@ -28,13 +28,13 @@
   justify-content: flex-start;
   align-items: center;
   height: 100vh;
-  padding-left: 20px;
+  padding-left: 2vh;
 }
 
 .stepper {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 5.5vh;
 }
 
 .step {
@@ -45,8 +45,8 @@
 }
 
 .circle {
-  width: 30px;
-  height: 30px;
+  width: 5vh;
+  height: 5vh;
   border-radius: 50%;
   background-color: #ccc;
   color: #fff;
@@ -60,8 +60,8 @@
 }
 
 .title {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 1.4vh;
+  margin-bottom: 1.4vh;
   text-align: center;
   color: #1d5795; /* Set the blueish color for the text */
   font-weight: normal; /* Set the default font weight */
@@ -76,9 +76,9 @@
 }
 
 .line {
-  width: 2px;
-  height: 50%;
-  margin-top: 45px;
+  width: 0.3vh;
+  height: 6vh;
+  margin-top: 7vh;
   background-color: #ccc; /* Set the color to gray for the lines */
   position: absolute;
   left: 50%;
@@ -94,7 +94,7 @@
 .step:not(:first-child) .line {
   top: 0;
   bottom: 0;
-  margin-top: 60px;
+  margin-top: 9.6vh;
 }
 
 .step.done .circle {
@@ -119,7 +119,7 @@ export default defineComponent({
         "Guarantee Information",
         "Review & Book",
       ],
-      activeStep: 5,
+      activeStep: 3,
     };
   },
 });
